@@ -25,32 +25,12 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 - User Logout
   - return a reset token to null
   - _post_ request with user data to logout
-- User Delete Profile
-  - Validate info (email and confirmation)
-  - _delete_ request to remove the user and all data (tasks, workspaces) related to the user
 - Reset Password
   - When requested send an email with a link that has token for resetting
     - validate the user if they appear on db
     - encode a token in the link sent to user and check it
     - token valid for 10 mins
     - _put_ request to change the password if token is valid
-- Change Password
-  - When requested while logged in
-    - validate if current, new, confimed password's are valid (server side and client side)
-    - update the password via a _put_ request
-
-### Workspaces - (Authenticate)
-
-- Create Workspace
-  - create for the logged in user
-  - post request with some user info
-- Search Workspace
-  - retrive data related to what the user searched
-  - _get_ request with body to filter
-- Share Workspace
-  - create a shareable link with a token that has workspace.\_id as a payload and creation meta data
-  - validate token then send tasks data as responce
-  - _get_ request to server _responce_ shareable link
 
 ### Tasks - (Authenticate)
 
@@ -69,15 +49,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
   - validate user and workspace
   - update with new data
   - _put_ request with body
-- Upload Files
-  - validate user, workspace and task
-  - upload images/pdf's for a specific task
-  - Store files on the server filesystem
-- Share Task
-  - create a shareable link with a token that has task.\_id as a payload and creation meta data
-  - validate token then send tasks data as responce
-  - _get_ request to server _responce_ shareable link
-
+  
 ### Security
 
 - Encrypt passwords
