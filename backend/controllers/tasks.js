@@ -25,3 +25,12 @@ exports.postTask = (req, res, next)=>{
 exports.editTask = (req, res, next)=>{
 
 }
+
+/*
+  DELETE request
+  When user wants to delete a task
+  Private
+*/
+exports.deleteTask = (req, res, next)=>{
+
+}
