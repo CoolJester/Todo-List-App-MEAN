@@ -18,5 +18,7 @@ app.use(express.json());
 app.use(cors());
 
 //Routes
+app.use("/api", authRouter);
+app.use("/api", tasksRouter);
 
 app.listen(3000);
