@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const jwt = require('jsonwebtoken');
 
 //Models
 const userModel = require("../models/user");
@@ -8,7 +9,47 @@ const userModel = require("../models/user");
   when a user tries to login
   public
 */
-exports.postLogin = (req, res, next) => {};
+exports.postLogin = (req, res, next) => {
+  //separate the data
+  const { email, password } = req.body;
+
+  //Check if a user with this email exists
+  userModel
+    .findOne({ email: email })
+    .then((user) => {
+      //check if user is truthy
+      if (!user) {
+        res.status(500).json({
+          status: "Failed",
+          message: "User not found",
+        });
+        res.end();
+        return;
+      }
+      //Validate the data
+      bcrypt.compare(password, user.password).then((isValid) => {
+        if (isValid) {
+          //On success create token
+          const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET, {expiresIn: '30d'});
+          res.status(200).json({
+            status: 'Login Successful',
+            token: token
+          });
+        } else {
+          res.status(400).json({
+            status: "Invalid Data",
+            message: "Email or Password does not match",
+          });
+        }
+      });
+    })
+    .catch((err) => {
+      res.status(400).json({
+        status: "Failed",
+        message: "Something went wrong",
+      });
+    });
+};
 
 /*
   POST request
@@ -17,12 +58,11 @@ exports.postLogin = (req, res, next) => {};
 */
 exports.postRegister = (req, res, next) => {
   //separate the data
-  const email = req.body.email;
-  const password = req.body.password;
+  const { email, password } = req.body;
 
   //Check if a user with this email exists already
   userModel.findOne({ email: email }).then((user) => {
-    //check if user is truthy 
+    //check if user is truthy
     if (user) {
       res.status(500).json({
         status: "Failed",
@@ -38,19 +78,18 @@ exports.postRegister = (req, res, next) => {
         userModel
           .create({ email: email, password: hashedPass })
           .then((data) => {
-            console.log("User stored to DB");
             res.status(201).json(data);
+            res.end();
           })
           .catch((err) => {
             console.log("failed to store");
-            res.status(500).json({
+            res.status(400).json({
               status: "Failed",
-              message: "Could not hash the password",
+              message: "Could not Store the user",
             });
           });
       })
       .catch((err) => {
-        console.log("Something went wrong".red);
         res.status(500).json({
           status: "Failed",
           message: "Could not hash the password",
