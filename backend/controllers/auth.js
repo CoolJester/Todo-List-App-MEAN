@@ -20,32 +20,43 @@ exports.postRegister = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  //Hash the password
-  bcrypt
-    .hash(password, 10)
-    .then((hashedPass) => {
-      //Store to the database and return a result
-      userModel
-        .create({ email: email, password: hashedPass })
-        .then((data) => {
-          console.log("User store to DB");
-          res.status(201).json(data);
-        })
-        .catch((err) => {
-          console.log("failed to store");
-          res.status(500).json({
-            status: "Failed",
-            message: "Could not hash the password",
-          });
-        });
-    })
-    .catch((err) => {
-      console.log("Something went wrong, could not hash".red);
+  //Check if a user with this email exists already
+  userModel.findOne({ email: email }).then((user) => {
+    //check if user is truthy 
+    if (user) {
       res.status(500).json({
         status: "Failed",
-        message: "Could not hash the password",
+        message: "User already exists",
       });
-    });
+      return;
+    }
+    //Hash the password and store
+    bcrypt
+      .hash(password, 10)
+      .then((hashedPass) => {
+        //Store to the database and return a result
+        userModel
+          .create({ email: email, password: hashedPass })
+          .then((data) => {
+            console.log("User stored to DB");
+            res.status(201).json(data);
+          })
+          .catch((err) => {
+            console.log("failed to store");
+            res.status(500).json({
+              status: "Failed",
+              message: "Could not hash the password",
+            });
+          });
+      })
+      .catch((err) => {
+        console.log("Something went wrong".red);
+        res.status(500).json({
+          status: "Failed",
+          message: "Could not hash the password",
+        });
+      });
+  });
 };
 
 /*
