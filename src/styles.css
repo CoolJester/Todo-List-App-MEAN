@@ -2,3 +2,8 @@
 html {
   font-size: 62.5%;
 }
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+}

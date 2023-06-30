@@ -1,0 +1,37 @@
+main {
+  margin: 6.4rem auto;
+}
+
+h1 {
+  font-size: 6.4rem;
+  margin-bottom: 1.8rem;
+}
+
+p {
+  font-size: 3rem;
+  margin-bottom: 3.2rem;
+}
+
+form {
+  display: flex;
+  gap: 1.2rem;
+}
+
+form input {
+  width: 60%;
+  font-size: 2rem;
+}
+
+form button {
+  font-size: 2rem;
+}
+
+.img-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-display img {
+  width: 70%;
+}
