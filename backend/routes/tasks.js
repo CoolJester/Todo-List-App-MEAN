@@ -12,6 +12,7 @@ const auth = require("../middleware/auth");
 const tasksRouter = express.Router();
 
 tasksRouter.get("/tasks", auth, getTasks);
+tasksRouter.get("/tasks?search", auth, getTasks);
 tasksRouter.get("/tasks/:taskId", auth, getTask);
 tasksRouter.post("/tasks", auth, postTask);
 tasksRouter.put("/tasks/:taskId", auth, editTask);

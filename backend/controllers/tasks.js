@@ -15,8 +15,8 @@ exports.getTask = (req, res, next) => {
     return res.status(403).json({ status: "Not permitted" });
   }
 
-  //Get tasks from he database
-  let userTasks = Tasks.findOne({ _id: taskId, userId: req.body.userId })
+  //Get task from he database
+  Tasks.findOne({ _id: taskId, userId: req.body.userId })
     .then((task) => {
       //If tasks are not there
       if (!task) {
@@ -45,11 +45,23 @@ exports.getTasks = (req, res, next) => {
   //Get tasks from the database
   Tasks.find({ userId: req.body.userId })
     .then((tasks) => {
+      let filteredTasks = [];
+      //If the user is searching for a specific task
+      if (req.query.search) {
+        tasks.forEach((task) => {
+          if (task.title.includes(req.query.search)) {
+            filteredTasks.push(task);
+          }
+        });
+        return res.status(200).json(filteredTasks);
+      }
+
       //If tasks are not there
       if (!tasks) {
         return res.status(404).json({ status: "No Task/s Found" });
+      } else {
+        res.status(200).json(tasks);
       }
-      res.status(200).json(tasks);
     })
     .catch((err) => {
       res.status(500).json({
