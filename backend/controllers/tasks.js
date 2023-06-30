@@ -9,6 +9,13 @@ const Tasks = require("../models/tasks");
 exports.getTasks = (req, res, next) => {};
 
 /*
+  GET request
+  When user wants to get one task
+  Private
+*/
+exports.getTask = (req, res, next) => {};
+
+/*
   POST request
   When user wants to add a task
   Private (don't forget to add the auth middleware)
