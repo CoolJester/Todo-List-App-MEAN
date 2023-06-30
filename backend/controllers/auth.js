@@ -23,7 +23,6 @@ exports.postLogin = (req, res, next) => {
           status: "Failed",
           message: "User not found",
         });
-        res.end();
         return;
       }
       //Validate the data
@@ -37,7 +36,7 @@ exports.postLogin = (req, res, next) => {
           });
         } else {
           res.status(400).json({
-            status: "Invalid Data",
+            status: "Login Failed",
             message: "Email or Password does not match",
           });
         }
