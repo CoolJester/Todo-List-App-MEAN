@@ -42,7 +42,7 @@ exports.getTasks = (req, res, next) => {
     return res.status(403).json({ status: "Not permitted" });
   }
 
-  //Get tasks from he database
+  //Get tasks from the database
   Tasks.find({ userId: req.body.userId })
     .then((tasks) => {
       //If tasks are not there
@@ -95,7 +95,44 @@ exports.postTask = (req, res, next) => {
   When user wants to edit a tasks data
   Private
 */
-exports.editTask = (req, res, next) => {};
+exports.editTask = (req, res, next) => {
+  //Check if user is valid
+  if (!req.body.userId) {
+    return res.status(403).json({ status: "Not permitted" });
+  }
+
+  //Get the task/user id from params
+  const taskId = req.params.taskId;
+  const userId = req.body.userId;
+
+  //Get task from the database
+  //Get tasks from the database
+  Tasks.findOne({ _id: taskId, userId: userId })
+    .then((task) => {
+      //If task is not found
+      if (!task) {
+        return res.status(404).json({ status: "No Task/s Found" });
+      }
+
+      //assign values
+      task.title = req.body.title || task.title;
+      task.date = req.body.date || task.date;
+      task.notes = [...task.notes, req.body.notes];
+      task.staus = req.body.status || task.status;
+
+      //save
+      task.save();
+
+      res.status(200).json(task);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        status: "Something went wrong",
+      });
+    });
+
+  console.log(req.body);
+};
 
 /*
   DELETE request
@@ -108,7 +145,10 @@ exports.deleteTask = (req, res, next) => {
     return res.status(403).json({ status: "Not permitted" });
   }
 
-  Tasks.findOneAndRemove({ _id: req.params.taskId })
+  //Get the task id
+  const taskId = req.params.taskId;
+
+  Tasks.findOneAndRemove({ _id: taskId })
     .then((data) => {
       res.status(200).json({ status: "Task was Deleted", data: data });
     })
