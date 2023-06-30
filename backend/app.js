@@ -17,8 +17,10 @@ dotenv.config({path: './config/config.env'});
 //DB connection
 mongoose.connect(process.env.MONGO_URI).then(()=>console.log('Connected to DB'.green)).catch(err=>console.log('Failed to connect to DB'.red));
 
-//Adding morgan
-app.use(morgan("dev"));
+// Dev logging middleware
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 //JSON format by default
 app.use(express.json());
