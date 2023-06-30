@@ -25,7 +25,7 @@ module.exports = (req, res, next) => {
         });
       }
       //Store the userId and pass it
-      req.body.userId = foundUser._id;
+      req.body.userId = foundUser._id.toString();
       next();
     });
   });
