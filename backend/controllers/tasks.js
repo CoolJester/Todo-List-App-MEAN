@@ -3,17 +3,60 @@ const Tasks = require("../models/tasks");
 
 /*
   GET request
-  When user wants to get their tasks
-  Private
-*/
-exports.getTasks = (req, res, next) => {};
-
-/*
-  GET request
   When user wants to get one task
   Private
 */
-exports.getTask = (req, res, next) => {};
+exports.getTask = (req, res, next) => {
+  //Get the taskId
+  const taskId = req.params.taskId;
+
+  //Check if user is valid to get data
+  if (!req.body.userId) {
+    return res.status(403).json({ status: "Not permitted" });
+  }
+
+  //Get tasks from he database
+  let userTasks = Tasks.findOne({ _id: taskId, userId: req.body.userId })
+    .then((task) => {
+      //If tasks are not there
+      if (!task) {
+        return res.status(404).json({ status: "No Task/s Found" });
+      }
+      res.status(200).json(task);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        status: "Something went wrong",
+      });
+    });
+};
+
+/*
+  GET request
+  When user wants to get their tasks
+  Private
+*/
+exports.getTasks = (req, res, next) => {
+  //Check if user is valid to get data
+  if (!req.body.userId) {
+    return res.status(403).json({ status: "Not permitted" });
+  }
+
+  //Get tasks from he database
+  let userTasks = Tasks.find({ userId: req.body.userId })
+    .then((tasks) => {
+      //If tasks are not there
+      if (!tasks) {
+        return res.status(404).json({ status: "No Task/s Found" });
+      }
+      res.status(200).json(tasks);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        status: "Something went wrong",
+      });
+    });
+};
 
 /*
   POST request

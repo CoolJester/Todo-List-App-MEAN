@@ -14,7 +14,7 @@ const tasksRouter = express.Router();
 tasksRouter.get("/tasks", auth, getTasks);
 tasksRouter.get("/tasks/:taskId", auth, getTask);
 tasksRouter.post("/tasks", auth, postTask);
-tasksRouter.put("/tasks/:taskId", editTask);
+tasksRouter.put("/tasks/:taskId", auth, editTask);
 
 tasksRouter.delete("/tasks/:id/:taskId", deleteTask);
 
