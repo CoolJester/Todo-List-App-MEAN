@@ -11,7 +11,7 @@ main {
   width: 10rem;
 }
 
-form {
+main form {
   width: 100%;
   padding: 6.4rem 1.2rem;
   display: flex;
@@ -20,12 +20,12 @@ form {
   gap: 2.4rem;
 }
 
-form input {
+main form input {
   width: 70%;
   font-size: 1.6rem;
 }
 
-form button {
+main form button {
   font-size: 1.8rem;
 }
 
@@ -49,4 +49,50 @@ a {
 
 a:hover {
   color: blue;
+}
+
+.register-2 {
+  margin: 8.4rem auto;
+}
+
+.register-2-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.register-2-content form input,
+.register-2-content form button {
+  font-size: 1.6rem;
+}
+
+.register-2 h1 {
+  font-size: 4.2rem;
+  margin-bottom: 1.8rem;
+}
+
+.register-2 h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.8rem;
+}
+/*
+.register-2 form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+} */
+
+.register-2-content form label {
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.img-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-display img {
+  width: 70%;
 }

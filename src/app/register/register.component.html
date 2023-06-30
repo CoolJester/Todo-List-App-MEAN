@@ -1,4 +1,4 @@
-<main class="container">
+<main *ngIf="registerFirst" class="container">
   <img class="logo" src="../../assets/images/1.png" alt="A logo of Noti" />
 
   <form class="shadow-lg">
@@ -36,3 +36,29 @@
     </div>
   </form>
 </main>
+
+<div *ngIf="!registerFirst" class="register-2 container">
+  <div class="row">
+    <div class="col-md-6 img-display">
+      <img
+        src="../../assets/images/tasks management 2.png"
+        alt="Image of some boards as a demo to the user"
+      />
+    </div>
+    <div class="col-md-6 my-3 register-2-content">
+      <h1>Welcome to Noti</h1>
+      <h2>Create your first task</h2>
+      <form action="">
+        <label for="task">Name your first task</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Task Name"
+          name="task"
+        />
+        <br />
+        <button class="btn btn-lg btn-primary">Create your task</button>
+      </form>
+    </div>
+  </div>
+</div>
