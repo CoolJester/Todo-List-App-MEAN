@@ -25,10 +25,9 @@ exports.postTask = (req, res, next) => {
   if (!req.body.title) {
     return res.status(400).json({ status: "Failed to save" });
   }
-  // req.body.userId = "649e97757f63722c1ecf0231"; //temporary for now
 
   //Check if user is valid to save here
-  if (req.body.userId !== req.params.id) {
+  if (!req.body.userId) {
     return res.status(403).json({ status: "Not permitted" });
   }
 
