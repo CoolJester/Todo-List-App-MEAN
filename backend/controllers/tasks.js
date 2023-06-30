@@ -43,7 +43,7 @@ exports.getTasks = (req, res, next) => {
   }
 
   //Get tasks from he database
-  let userTasks = Tasks.find({ userId: req.body.userId })
+  Tasks.find({ userId: req.body.userId })
     .then((tasks) => {
       //If tasks are not there
       if (!tasks) {
@@ -102,4 +102,20 @@ exports.editTask = (req, res, next) => {};
   When user wants to delete a task
   Private
 */
-exports.deleteTask = (req, res, next) => {};
+exports.deleteTask = (req, res, next) => {
+  //Check if user is valid
+  if (!req.body.userId) {
+    return res.status(403).json({ status: "Not permitted" });
+  }
+
+  Tasks.findOneAndRemove({ _id: req.params.taskId })
+    .then((data) => {
+      res.status(200).json({ status: "Task was Deleted", data: data });
+    })
+    .catch((err) => {
+      res.status(400).json({
+        status: "Failed to delete task",
+        data: err,
+      });
+    });
+};

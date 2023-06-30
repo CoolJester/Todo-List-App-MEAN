@@ -16,6 +16,6 @@ tasksRouter.get("/tasks/:taskId", auth, getTask);
 tasksRouter.post("/tasks", auth, postTask);
 tasksRouter.put("/tasks/:taskId", auth, editTask);
 
-tasksRouter.delete("/tasks/:id/:taskId", deleteTask);
+tasksRouter.delete("/tasks/:taskId", auth, deleteTask);
 
 module.exports = tasksRouter;
