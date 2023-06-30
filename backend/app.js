@@ -2,11 +2,20 @@ const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const mongoose = require("mongoose");
+const colors = require('colors');
+const dotenv = require('dotenv');
 
 const authRouter = require("./routes/auth");
 const tasksRouter = require("./routes/tasks");
 
 const app = express();
+
+//Setting up environment file location
+dotenv.config({path: './config/config.env'});
+
+//DB connection
+mongoose.connect(process.env.MONGO_URI).then(()=>console.log('Connected to DB'.green)).catch(err=>console.log('Failed to connect to DB'.red));
 
 //Adding morgan
 app.use(morgan("dev"));
