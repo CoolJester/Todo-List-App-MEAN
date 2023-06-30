@@ -35,4 +35,11 @@ app.use(cors());
 app.use("/api", authRouter);
 app.use("/api", tasksRouter);
 
+//Page not found
+app.use("/", (req, res) => {
+  res.status(404).json({
+    status: "Page not found",
+  });
+});
+
 app.listen(3000);
