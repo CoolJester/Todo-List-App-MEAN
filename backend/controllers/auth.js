@@ -1,5 +1,5 @@
 const bcrypt = require("bcryptjs");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 //Models
 const userModel = require("../models/user");
@@ -29,10 +29,12 @@ exports.postLogin = (req, res, next) => {
       bcrypt.compare(password, user.password).then((isValid) => {
         if (isValid) {
           //On success create token
-          const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET, {expiresIn: '30d'});
+          const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+            expiresIn: "30d",
+          });
           res.status(200).json({
-            status: 'Login Successful',
-            token: token
+            status: "Login Successful",
+            token: token,
           });
         } else {
           res.status(400).json({
@@ -102,7 +104,12 @@ exports.postRegister = (req, res, next) => {
   when a user tries to logout
   public
 */
-exports.postLogout = (req, res, next) => {};
+exports.postLogout = (req, res, next) => {
+  res.json({
+    status: "Logout",
+    message: "Goodbye",
+  });
+};
 
 /*
   POST request
