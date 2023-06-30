@@ -11,10 +11,10 @@ exports.getTasks = (req, res, next)=>{
 /*
   POST request
   When user wants to add a task
-  Private
+  Private (don't forget to add the auth middleware)
 */
 exports.postTask = (req, res, next)=>{
-  
+
 }
 
 /*

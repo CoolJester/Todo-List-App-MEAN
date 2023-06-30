@@ -24,6 +24,8 @@ module.exports = (req, res, next) => {
           status: "Could not authenticate",
         });
       }
+      //Store the userId and pass it
+      req.body.userId = foundUser._id;
       next();
     });
   });
