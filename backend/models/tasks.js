@@ -25,3 +25,5 @@ const tasksSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+module.exports = mongoose.Model("Task", tasksSchema);
