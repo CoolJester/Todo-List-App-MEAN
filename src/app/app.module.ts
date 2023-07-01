@@ -7,6 +7,7 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MainComponent } from './main/main.component';
+import { AppRouterModule } from './app.router.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { MainComponent } from './main/main.component';
     RegisterComponent,
     MainComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, AppRouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })

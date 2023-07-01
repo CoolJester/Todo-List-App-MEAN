@@ -37,3 +37,7 @@ nav ul {
 nav ul li {
   font-size: 1.8rem;
 }
+
+nav ul li img {
+  width: 35px;
+}
