@@ -1,13 +1,19 @@
 <header class="shadow">
-  <div class="logo">
+  <a routerLink="/" class="logo">
     <img src="../../assets/images/2.png" alt="Logo for Noti" />
     <span>NOTI</span>
-  </div>
+  </a>
   <nav>
     <ul>
-      <li><a>Log In</a></li>
-      <li><a class="btn btn-primary btn-lg">Get Started</a></li>
-      <li><img src="../../assets/images/person.png" alt="Person icon"/></li>
+      <li *ngIf="!user && !main">
+        <a routerLink="/login" class="text-dark">Log In</a>
+      </li>
+      <li *ngIf="!user && !main">
+        <a routerLink="/register" class="btn btn-primary btn-lg">Get Started</a>
+      </li>
+      <li *ngIf="!landing && !user">
+        <img src="../../assets/images/person.png" alt="Person icon" />
+      </li>
     </ul>
   </nav>
 </header>
