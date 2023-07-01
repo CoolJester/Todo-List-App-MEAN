@@ -7,7 +7,7 @@ import { HeaderService } from '../shared/services/header.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  registerFirst: boolean = false;
+  registerFirst: boolean = true;
 
   constructor(public headerService: HeaderService) {}
 
