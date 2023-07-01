@@ -1,5 +1,5 @@
 header {
-  min-height: 80px;
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   padding: 0.8rem 2.4rem;

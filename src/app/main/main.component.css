@@ -1,0 +1,152 @@
+main {
+  width: 100vw;
+  height: 90vh;
+  padding: 0.8rem;
+}
+
+.tasks {
+  width: 95vw;
+  min-height: 85vh;
+  margin: 2.5vh auto;
+  padding: 1.2rem;
+}
+
+.tasks-info {
+  display: flex;
+  gap: 1.6rem;
+  margin-bottom: 3.2rem;
+}
+
+.tasks-panel {
+  border: 1px solid gray;
+  padding: 2.4rem;
+  height: auto;
+}
+
+.tasks-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-bottom: 2.4rem;
+}
+
+.add-task {
+  display: flex;
+  gap: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  align-items: center;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid gray;
+  border-radius: 0.8rem;
+  cursor: pointer;
+}
+
+.add-task:hover {
+  fill: white;
+  background-color: #38b6ff;
+}
+
+.search-task {
+  display: flex;
+  gap: 1.2rem;
+  font-size: 1.6rem;
+  align-items: center;
+  padding: 0.2rem 1.2rem;
+  border: 1px solid gray;
+  border-radius: 0.8rem;
+}
+
+.search-task input {
+  font-size: 1.8rem;
+  border: none;
+}
+
+.sort-task {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.sort-task select {
+  font-size: 1.6rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.8rem;
+}
+
+.tasks-container {
+  min-height: 55vh;
+  padding: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  column-gap: 1.2rem;
+  row-gap: 3.2rem;
+}
+
+.tasks-card {
+  border: 1px solid gray;
+  max-width: 400px;
+}
+
+.title,
+.card-body {
+  padding: 2.4rem;
+}
+
+.title {
+  /* padding-bottom: 1rem; */
+  border-bottom: 1px solid rgb(163, 163, 163);
+  background-color: #e9ecef;
+}
+
+.title h2 {
+  font-size: 3.6rem;
+}
+
+.notes {
+  margin-bottom: 2.4rem;
+  width: 100%;
+  min-height: 50px;
+}
+
+.notes h3 {
+  font-size: 2.2rem;
+}
+
+.notes p {
+  font-size: 1.8rem;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.status svg {
+  fill: green;
+}
+
+.status span {
+  font-size: 1.6rem;
+}
+.date {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 2.4rem;
+}
+
+.date svg {
+  fill: #222;
+}
+
+.date span {
+  font-size: 1.6rem;
+}
+.delete {
+  font-size: 1.4rem;
+  padding: 1rem 1.8rem;
+}

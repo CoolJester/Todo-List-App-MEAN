@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
     LandingComponent,
     LoginComponent,
     RegisterComponent,
+    MainComponent,
   ],
   imports: [BrowserModule],
   providers: [],
