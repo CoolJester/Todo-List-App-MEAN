@@ -12,6 +12,9 @@ export class HeaderComponent implements OnInit {
   user = false;
   main = false;
 
+  //helper variables
+  profileMenu = false;
+
   constructor(public headerService: HeaderService) {}
 
   ngOnInit(): void {
@@ -31,5 +34,10 @@ export class HeaderComponent implements OnInit {
         this.main = true;
       }
     });
+  }
+
+  toggleProfileMenu() {
+    console.log('Works');
+    this.profileMenu = !this.profileMenu;
   }
 }

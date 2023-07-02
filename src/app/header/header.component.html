@@ -11,8 +11,40 @@
       <li *ngIf="!user && !main">
         <a routerLink="/register" class="btn btn-primary btn-lg">Get Started</a>
       </li>
-      <li *ngIf="!landing && !user">
-        <img src="../../assets/images/person.png" alt="Person icon" />
+      <li *ngIf="!landing && !user" class="profile-icon">
+        <img
+          src="../../assets/images/person.png"
+          (click)="toggleProfileMenu()"
+          alt="Person icon"
+        />
+        <div *ngIf="profileMenu" class="profile shadow">
+          <div class="profile-row">
+            <div class="profile-img">
+              <img src="../../assets/images/2.png" alt="" />
+            </div>
+            <div class="profile-content"><span>email@email.com</span></div>
+          </div>
+          <hr />
+          <div class="profile-row">
+            <div class="profile-img">
+              <img src="../../assets/images/person.png" alt="" />
+            </div>
+            <div class="profile-content"><span>View Profile</span></div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-img">
+              <img src="../../assets/images/2.png" alt="" />
+            </div>
+            <div class="profile-content"><span>Logout</span></div>
+          </div>
+          <hr />
+          <div class="profile-row">
+            <div class="profile-img">
+              <img src="../../assets/images/2.png" alt="" />
+            </div>
+            <div class="profile-content"><span>Help</span></div>
+          </div>
+        </div>
       </li>
     </ul>
   </nav>
