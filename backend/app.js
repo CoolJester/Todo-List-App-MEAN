@@ -11,6 +11,9 @@ const tasksRouter = require("./routes/tasks");
 
 const app = express();
 
+//Adjusting the CORS
+app.use(cors());
+
 //Setting up environment file location
 dotenv.config({ path: "./config/config.env" });
 
@@ -27,9 +30,6 @@ if (process.env.NODE_ENV === "development") {
 
 //JSON format by default
 app.use(express.json());
-
-//Adjusting the CORS
-app.use(cors());
 
 //Routes
 app.use("/api", authRouter);

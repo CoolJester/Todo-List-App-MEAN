@@ -19,7 +19,7 @@ exports.postLogin = (req, res, next) => {
     .then((user) => {
       //check if user is truthy
       if (!user) {
-        res.status(500).json({
+        res.status(404).json({
           status: "Failed",
           message: "User not found",
         });
@@ -37,7 +37,7 @@ exports.postLogin = (req, res, next) => {
             token: token,
           });
         } else {
-          res.status(400).json({
+          res.status(403).json({
             status: "Login Failed",
             message: "Email or Password does not match",
           });
@@ -45,7 +45,7 @@ exports.postLogin = (req, res, next) => {
       });
     })
     .catch((err) => {
-      res.status(400).json({
+      res.status(500).json({
         status: "Failed",
         message: "Something went wrong",
       });

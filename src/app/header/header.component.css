@@ -8,7 +8,7 @@ header {
 .logo {
   display: flex;
   align-items: center;
-  gap: 2.4rem;
+  gap: 0rem;
   text-decoration: none;
 }
 
@@ -23,6 +23,7 @@ header {
   letter-spacing: 0.5px;
   color: #222;
   text-decoration: none;
+  transform: translateX(-10px);
 }
 
 nav {

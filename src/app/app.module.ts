@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MainComponent } from './main/main.component';
 import { AppRouterModule } from './app.router.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { AppRouterModule } from './app.router.module';
     RegisterComponent,
     MainComponent,
   ],
-  imports: [BrowserModule, AppRouterModule, HttpClientModule],
+  imports: [BrowserModule, AppRouterModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
