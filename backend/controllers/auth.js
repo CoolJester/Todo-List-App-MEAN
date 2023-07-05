@@ -65,7 +65,7 @@ exports.postRegister = (req, res, next) => {
   userModel.findOne({ email: email }).then((user) => {
     //check if user is truthy
     if (user) {
-      res.status(500).json({
+      res.status(403).json({
         status: "Failed",
         message: "User already exists",
       });
@@ -79,11 +79,17 @@ exports.postRegister = (req, res, next) => {
         userModel
           .create({ email: email, password: hashedPass })
           .then((data) => {
-            res.status(201).json(data);
+            const token = jwt.sign(
+              { userId: data._id },
+              process.env.JWT_SECRET,
+              {
+                expiresIn: "30d",
+              }
+            );
+            res.status(201).json({ token: token });
             res.end();
           })
           .catch((err) => {
-            console.log("failed to store");
             res.status(400).json({
               status: "Failed",
               message: "Could not Store the user",

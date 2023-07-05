@@ -1,27 +1,54 @@
 <main *ngIf="registerFirst" class="container">
   <img class="logo" src="../../assets/images/1.png" alt="A logo of Noti" />
 
-  <form class="shadow-lg">
+  <form
+    (ngSubmit)="formSubmit(registerForm)"
+    #registerForm="ngForm"
+    class="shadow-lg"
+  >
     <h1>Sign Up for Noti</h1>
+    <div *ngIf="error" class="alert alert-danger">
+      <p>Whoops, something went wrong. Please try again later</p>
+    </div>
+    <div *ngIf="userExists" class="alert alert-danger">
+      <p>This user already exists</p>
+    </div>
     <input
       type="email"
       placeholder="Enter your email"
       name="email"
       class="form-control"
+      ngModel
+      required
     />
     <input
       type="password"
       placeholder="Enter your password"
       name="password"
       class="form-control"
+      ngModel
+      [(ngModel)]="password"
+      required
     />
     <input
       type="password"
       placeholder="Confirm your password"
       name="confirm-password"
       class="form-control"
+      [(ngModel)]="cPassword"
+      (keyup)="onChange()"
+      required
     />
-    <button type="submit" class="btn btn-primary">Login</button>
+    <div *ngIf="!matches" class="alert alert-danger">
+      <p>Passwords do not match</p>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!registerForm.valid && matches && !registerForm.touched"
+    >
+      Login
+    </button>
 
     <hr />
 
