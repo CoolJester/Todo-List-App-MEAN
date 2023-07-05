@@ -11,6 +11,7 @@ import { MainComponent } from './main/main.component';
 import { AppRouterModule } from './app.router.module';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { AddTaskComponent } from './main/add-task/add-task.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
     LoginComponent,
     RegisterComponent,
     MainComponent,
+    AddTaskComponent,
   ],
   imports: [BrowserModule, AppRouterModule, HttpClientModule, FormsModule],
   providers: [

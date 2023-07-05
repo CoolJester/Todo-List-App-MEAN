@@ -1,1 +1,37 @@
-<p>add-task works!</p>
+<div class="backdrop">
+  <div class="add-task">
+    <div class="heading">
+      <i>*icon</i>
+      <h1>Add a new task</h1>
+      <p>
+        For: <span><i>User Email</i></span>
+      </p>
+    </div>
+    <form class="body" action="">
+      <div class="row mb-3">
+        <label class="form-label" for="name">Name of Task</label>
+        <input class="form-control" type="text" name="name" id="name" />
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label class="form-label" for="status">Status</label>
+          <input class="form-control" type="status" name="status" id="" />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="date">Date</label>
+          <input class="form-control" type="date" name="date" id="" />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="time">Time</label>
+          <input class="form-control" type="time" name="time" id="" />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="form-label" for="notes">Notes</label>
+        <textarea class="form-control" name="notes" id="" rows="4"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary me-3">Create Task</button>
+      <button type="button" class="btn btn-danger">Close</button>
+    </form>
+  </div>
+</div>
