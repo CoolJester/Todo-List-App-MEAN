@@ -71,6 +71,10 @@ export class MainComponent {
     this.taskAddWindow = true;
   }
 
+  addedNewTask(event) {
+    this.tasks.push(event);
+  }
+
   //When user closes the tab for adding tasks
   addTaskStateChanged(event) {
     this.taskAddWindow = event;
@@ -124,5 +128,13 @@ export class MainComponent {
         });
         break;
     }
+  }
+
+  editTask(taskId: String) {
+    alert('Tasks Clicked ' + taskId);
+  }
+
+  deleteTask() {
+    alert('Delete task Clicked');
   }
 }

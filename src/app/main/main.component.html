@@ -76,17 +76,17 @@
           <h2>No Tasks To Show</h2>
         </div>
         <div *ngFor="let task of tasks" class="tasks-card">
-          <div class="title">
+          <div class="title" (click)="editTask(task._id)">
             <h2>{{ task.title }}</h2>
           </div>
           <div class="card-body">
-            <div class="notes overflow-auto">
+            <div class="notes overflow-auto" (click)="editTask(task._id)">
               <h3>Notes</h3>
               <div *ngFor="let note of task.notes">
                 <p>{{ note }}</p>
               </div>
             </div>
-            <div class="status">
+            <div class="status" (click)="editTask(task._id)">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -99,7 +99,7 @@
               </svg>
               <span>{{ task.status }}</span>
             </div>
-            <div class="date">
+            <div class="date" (click)="editTask(task._id)">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -116,7 +116,9 @@
                 {{ task.date.getUTCDay() }}</span
               >
             </div>
-            <button class="btn btn-danger delete">Delete</button>
+            <button class="btn btn-danger delete" (click)="deleteTask()">
+              Delete
+            </button>
           </div>
         </div>
       </div>
@@ -124,4 +126,8 @@
   </div>
 </main>
 
-<app-add-task *ngIf="taskAddWindow" (state)="addTaskStateChanged($event)"></app-add-task>
+<app-add-task
+  *ngIf="taskAddWindow"
+  (state)="addTaskStateChanged($event)"
+  (newTask)="addedNewTask($event)"
+></app-add-task>

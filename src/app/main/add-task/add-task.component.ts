@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+
+import { Task } from 'src/app/shared/models/task';
 import { TasksService } from 'src/app/shared/services/tasks.service';
 
 @Component({
@@ -8,6 +10,7 @@ import { TasksService } from 'src/app/shared/services/tasks.service';
 })
 export class AddTaskComponent {
   @Output() state = new EventEmitter<boolean>();
+  @Output() newTask = new EventEmitter<Task>();
 
   constructor(private taskService: TasksService) {}
 
@@ -25,15 +28,29 @@ export class AddTaskComponent {
         form.value.Notes ? form.value.Notes : ''
       )
       .subscribe(
-        (data) => {
+        (data: any) => {
+          //Success message
           this.success = true;
+          //Form reset
           form.reset();
+          //Pushing the new task data to parent
+          const newTask = {
+            _id: data.createdTask._id,
+            title: data.createdTask.title,
+            date: new Date(data.createdTask.date),
+            notes: data.createdTask.notes,
+            status: data.createdTask.status,
+            userId: data.createdTask.userId,
+          };
+          this.newTask.emit(newTask);
+          //Hidding the window
           setTimeout(() => {
             this.onClose();
           }, 2000);
         },
         (error) => {
-          console.log(error);
+          //Success message
+          this.failed = true;
         }
       );
   }
