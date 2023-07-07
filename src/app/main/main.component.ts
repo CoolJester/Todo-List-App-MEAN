@@ -17,6 +17,7 @@ export class MainComponent {
 
   //Data
   tasks: Task[] = [];
+  taskAddWindow: boolean = false;
 
   ngOnInit(): void {
     //Fixing the header
@@ -64,6 +65,15 @@ export class MainComponent {
         console.log(error);
       }
     );
+  }
+
+  addTask() {
+    this.taskAddWindow = true;
+  }
+
+  //When user closes the tab for adding tasks
+  addTaskStateChanged(event) {
+    this.taskAddWindow = event;
   }
 
   sortSelected(select: any) {

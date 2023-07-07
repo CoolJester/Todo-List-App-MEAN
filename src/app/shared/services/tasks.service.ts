@@ -12,4 +12,21 @@ export class TasksService {
   public searchTasks(search: String) {
     return this.http.get('http://localhost:3000/api/tasks?search=' + search);
   }
+
+  public addTask(
+    title: String,
+    status: String,
+    date: Date,
+    time: String,
+    notes: String
+  ) {
+    const userData = {
+      title: title,
+      status: status,
+      date: date,
+      time: time,
+      notes: notes,
+    };
+    return this.http.post('http://localhost:3000/api/tasks', userData);
+  }
 }

@@ -4,17 +4,17 @@
   top: 10%;
   margin: auto;
   background-color: white;
+  z-index: 1000;
 }
 
 .heading {
   padding: 2.4rem;
   display: grid;
   grid-template-columns: 100px 1fr;
+  align-items: center;
 }
 
 .heading-icon {
-  width: 32px;
-  height: 32px;
 }
 
 .heading h1 {
