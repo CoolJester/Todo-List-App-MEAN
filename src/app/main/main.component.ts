@@ -51,6 +51,21 @@ export class MainComponent {
     );
   }
 
+  onSearch(search: any) {
+    this.tasksService.searchTasks(search.value).subscribe(
+      (data: Task[]) => {
+        this.tasks = data;
+        // Fixing the date
+        this.tasks.forEach((task) => {
+          task.date = new Date(task.date);
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
   sortSelected(select: any) {
     switch (select.value) {
       case 'date':

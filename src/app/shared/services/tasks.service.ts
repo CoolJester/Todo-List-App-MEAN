@@ -8,4 +8,8 @@ export class TasksService {
   public getTasks() {
     return this.http.get('http://localhost:3000/api/tasks');
   }
+
+  public searchTasks(search: String) {
+    return this.http.get('http://localhost:3000/api/tasks?search=' + search);
+  }
 }
