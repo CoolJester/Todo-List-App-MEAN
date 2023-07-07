@@ -53,17 +53,50 @@ export class MainComponent {
 
   sortSelected(select: any) {
     switch (select.value) {
-      case 'Date':
+      case 'date':
+        console.log(this.tasks);
         //When Date is selected
-        this.tasks;
+        this.tasks.sort(function (a, b) {
+          const dateA = new Date(a.date).getTime();
+          const dateB = new Date(b.date).getTime();
+          return dateA - dateB;
+        });
+        console.log(this.tasks);
         break;
-      case 'Status':
+      case 'status':
         //When Status is selected
-        this.tasks;
-        break;
-      case 'Name':
-        //When Name is selected
+        this.tasks.sort(function (a, b) {
+          const statusA = a.status.toUpperCase();
+          const statusB = b.status.toUpperCase();
 
+          if (statusA < statusB) {
+            return -1;
+          }
+
+          if (statusA > statusB) {
+            return 1;
+          }
+
+          return 0;
+        });
+
+        break;
+      case 'name':
+        //When Name is selected
+        this.tasks.sort(function (a, b) {
+          const titleA = a.title.toUpperCase();
+          const titleB = b.title.toUpperCase();
+
+          if (titleA < titleB) {
+            return -1;
+          }
+
+          if (titleA > titleB) {
+            return 1;
+          }
+
+          return 0;
+        });
         break;
     }
   }
