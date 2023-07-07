@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { HeaderService } from '../shared/services/header.service';
 import { TasksService } from '../shared/services/tasks.service';
 import { Task } from '../shared/models/task';
@@ -25,6 +26,10 @@ export class MainComponent {
     this.tasksService.getTasks().subscribe(
       (data: Task[]) => {
         this.tasks = data;
+        // Fixing the date
+        this.tasks.forEach((task) => {
+          task.date = new Date(task.date);
+        });
       },
       (error) => {
         //When something goes wrong
@@ -35,7 +40,7 @@ export class MainComponent {
             break;
           case 403:
             //Not authorizated
-            console.log('Can not acces these tasks');
+            console.log('Can not access these tasks');
             break;
           case 500:
             //When we have a server side error
@@ -44,5 +49,22 @@ export class MainComponent {
         }
       }
     );
+  }
+
+  sortSelected(select: any) {
+    switch (select.value) {
+      case 'Date':
+        //When Date is selected
+        this.tasks;
+        break;
+      case 'Status':
+        //When Status is selected
+        this.tasks;
+        break;
+      case 'Name':
+        //When Name is selected
+
+        break;
+    }
   }
 }
