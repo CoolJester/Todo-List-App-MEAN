@@ -29,4 +29,10 @@ export class TasksService {
     };
     return this.http.post('http://localhost:3000/api/tasks', userData);
   }
+
+  public editTask() {}
+
+  public deleteTask(taskId: String) {
+    return this.http.delete('http://localhost:3000/api/tasks/' + taskId);
+  }
 }

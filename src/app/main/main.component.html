@@ -116,7 +116,10 @@
                 {{ task.date.getUTCDay() }}</span
               >
             </div>
-            <button class="btn btn-danger delete" (click)="deleteTask()">
+            <button
+              class="btn btn-danger delete"
+              (click)="deleteTask(task._id)"
+            >
               Delete
             </button>
           </div>

@@ -134,7 +134,22 @@ export class MainComponent {
     alert('Tasks Clicked ' + taskId);
   }
 
-  deleteTask() {
-    alert('Delete task Clicked');
+  deleteTask(taskId: String) {
+    const deleteTask = confirm(
+      'Are you sure you wish to delete this task? \n' + taskId
+    );
+    if (deleteTask) {
+      this.tasksService.deleteTask(taskId).subscribe(
+        (data) => {
+          //Remove the task from array
+          this.tasks = this.tasks.filter((task) => {
+            return task._id != taskId;
+          });
+        },
+        (error) => {
+          alert('Failed to delete task\n' + error.status);
+        }
+      );
+    }
   }
 }
