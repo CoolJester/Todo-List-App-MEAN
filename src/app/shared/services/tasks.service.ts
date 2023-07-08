@@ -30,7 +30,23 @@ export class TasksService {
     return this.http.post('http://localhost:3000/api/tasks', userData);
   }
 
-  public editTask() {}
+  public editTask(
+    taskId: String,
+    title: String,
+    status: String,
+    date: Date,
+    time: String,
+    notes: String
+  ) {
+    const userData = {
+      title: title,
+      status: status,
+      date: date,
+      time: time,
+      notes: notes,
+    };
+    return this.http.put('http://localhost:3000/api/tasks/' + taskId, userData);
+  }
 
   public deleteTask(taskId: String) {
     return this.http.delete('http://localhost:3000/api/tasks/' + taskId);

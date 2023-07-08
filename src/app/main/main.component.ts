@@ -18,6 +18,8 @@ export class MainComponent {
   //Data
   tasks: Task[] = [];
   taskAddWindow: boolean = false;
+  taskEditWindow: boolean = false;
+  editTaskInput: Task;
 
   ngOnInit(): void {
     //Fixing the header
@@ -72,12 +74,23 @@ export class MainComponent {
   }
 
   addedNewTask(event) {
-    this.tasks.push(event);
+    // console.log(event);
+    this.tasks.forEach((task, index) => {
+      if (task._id === event._id) {
+        this.tasks[index] = event;
+        console.log('Matching tasks found');
+      }
+    });
   }
 
   //When user closes the tab for adding tasks
   addTaskStateChanged(event) {
     this.taskAddWindow = event;
+  }
+
+  //When user closes the tab for editing task
+  editTaskStateChanged(event) {
+    this.taskEditWindow = event;
   }
 
   sortSelected(select: any) {
@@ -130,8 +143,9 @@ export class MainComponent {
     }
   }
 
-  editTask(taskId: String) {
-    alert('Tasks Clicked ' + taskId);
+  editTask(task: Task) {
+    this.editTaskInput = task;
+    this.taskEditWindow = true;
   }
 
   deleteTask(taskId: String) {

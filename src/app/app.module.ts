@@ -12,6 +12,7 @@ import { AppRouterModule } from './app.router.module';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { AddTaskComponent } from './main/add-task/add-task.component';
+import { EditTaskComponent } from './main/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AddTaskComponent } from './main/add-task/add-task.component';
     RegisterComponent,
     MainComponent,
     AddTaskComponent,
+    EditTaskComponent,
   ],
   imports: [BrowserModule, AppRouterModule, HttpClientModule, FormsModule],
   providers: [

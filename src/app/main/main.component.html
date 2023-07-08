@@ -76,17 +76,17 @@
           <h2>No Tasks To Show</h2>
         </div>
         <div *ngFor="let task of tasks" class="tasks-card">
-          <div class="title" (click)="editTask(task._id)">
+          <div class="title" (click)="editTask(task)">
             <h2>{{ task.title }}</h2>
           </div>
           <div class="card-body">
-            <div class="notes overflow-auto" (click)="editTask(task._id)">
+            <div class="notes overflow-auto" (click)="editTask(task)">
               <h3>Notes</h3>
               <div *ngFor="let note of task.notes">
                 <p>{{ note }}</p>
               </div>
             </div>
-            <div class="status" (click)="editTask(task._id)">
+            <div class="status" (click)="editTask(task)">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -99,7 +99,7 @@
               </svg>
               <span>{{ task.status }}</span>
             </div>
-            <div class="date" (click)="editTask(task._id)">
+            <div class="date" (click)="editTask(task)">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -134,3 +134,9 @@
   (state)="addTaskStateChanged($event)"
   (newTask)="addedNewTask($event)"
 ></app-add-task>
+<app-edit-task
+  *ngIf="taskEditWindow"
+  (state)="editTaskStateChanged($event)"
+  (newTask)="addedNewTask($event)"
+  [task]="editTaskInput"
+></app-edit-task>
