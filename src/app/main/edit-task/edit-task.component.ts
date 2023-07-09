@@ -39,8 +39,8 @@ export class EditTaskComponent implements OnInit {
         form.value.title,
         form.value.status,
         new Date(new Date(form.value.date).toISOString()),
-        form.value.Time ? form.value.Time : '',
-        form.value.Notes ? form.value.Notes : ''
+        form.value.time ? form.value.time : '',
+        form.value.notes ? form.value.notes : ''
       )
       .subscribe(
         (data: any) => {

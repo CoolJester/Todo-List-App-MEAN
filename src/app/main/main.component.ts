@@ -74,11 +74,14 @@ export class MainComponent {
   }
 
   addedNewTask(event) {
-    // console.log(event);
+    console.log(event);
+    this.tasks.push(event);
+  }
+
+  editedTask(event) {
     this.tasks.forEach((task, index) => {
       if (task._id === event._id) {
         this.tasks[index] = event;
-        console.log('Matching tasks found');
       }
     });
   }

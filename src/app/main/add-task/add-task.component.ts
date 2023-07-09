@@ -22,10 +22,12 @@ export class AddTaskComponent {
     this.taskService
       .addTask(
         form.value.title,
-        form.value.status ? form.value.status : '',
-        new Date(new Date(form.value.date).toISOString()) || new Date(),
-        form.value.Time ? form.value.Time : '',
-        form.value.Notes ? form.value.Notes : ''
+        form.value.status ? form.value.status : 'Busy',
+        form.value.date
+          ? new Date(new Date(form.value.date).toISOString())
+          : new Date(),
+        form.value.time ? form.value.time : '',
+        form.value.notes ? form.value.notes : ''
       )
       .subscribe(
         (data: any) => {
