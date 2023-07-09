@@ -1,0 +1,43 @@
+@media (max-width: 1300px) {
+  .title,
+  .card-body {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .tasks-container {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1.2rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .tasks-container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2.4rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .tasks-filter {
+    gap: 0.8rem;
+    transform: scale(0.8);
+  }
+  .filter-sort-icon {
+    display: none;
+  }
+  .tasks {
+    max-height: 80vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .tasks-container {
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 0;
+  }
+  .tasks-card {
+    width: 100%;
+  }
+}

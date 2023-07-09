@@ -43,3 +43,78 @@ textarea {
 button {
   font-size: 1.8rem;
 }
+
+@media (max-width: 800px) {
+  .add-task {
+    top: 5%;
+  }
+}
+
+@media (max-width: 800px) {
+  .add-task {
+    top: 5%;
+  }
+  .heading h1 {
+    font-size: 3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .heading p {
+    font-size: 1.8rem;
+    grid-column: 2 / 3;
+  }
+
+  .body {
+    padding: 1.8rem;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+
+  input,
+  textarea {
+    font-size: 1.4rem;
+  }
+
+  button {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .add-task {
+    top: 2%;
+  }
+  .heading h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .heading p {
+    font-size: 1.4rem;
+    grid-column: 2 / 3;
+  }
+
+  .body {
+    padding: 1.4rem;
+  }
+
+  label {
+    font-size: 0.8rem;
+  }
+
+  input,
+  textarea {
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+  .heading {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+  }
+}

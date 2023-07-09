@@ -6,7 +6,7 @@ main {
 
 .tasks {
   width: 95vw;
-  min-height: 85vh;
+  max-height: 85vh;
   margin: 2.5vh auto;
   padding: 1.2rem;
 }
@@ -75,13 +75,14 @@ main {
 }
 
 .tasks-container {
-  min-height: 55vh;
+  height: 55vh;
   padding: 1.2rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   column-gap: 1.2rem;
   row-gap: 3.2rem;
+  overflow: scroll;
 }
 
 .tasks-card {
@@ -101,13 +102,13 @@ main {
 }
 
 .title h2 {
-  font-size: 3.6rem;
+  font-size: 3rem;
 }
 
 .notes {
   margin-bottom: 2.4rem;
   width: 100%;
-  min-height: 50px;
+  height: 80px;
 }
 
 .notes h3 {

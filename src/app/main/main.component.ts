@@ -7,7 +7,7 @@ import { Task } from '../shared/models/task';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'],
+  styleUrls: ['./main.component.css', './main.component.media.css'],
 })
 export class MainComponent {
   constructor(
