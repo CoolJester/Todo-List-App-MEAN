@@ -16,4 +16,10 @@ export class AuthService {
     let userData = { email: email, password: password };
     return this.http.post('http://localhost:3000/api/register', userData);
   }
+
+  validate(token: String) {
+    return this.http.post('http://localhost:3000/api/validate', {
+      token: token,
+    });
+  }
 }

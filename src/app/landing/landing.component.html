@@ -3,12 +3,14 @@
     <div class="col-md-6 my-3">
       <h1>Noti keeps your tasks and resources in one place</h1>
       <p>Keep all your tasks organized</p>
-      <form action="">
+      <form (ngSubmit)="onSubmit(form)" #form="ngForm">
         <input
           type="email"
           class="form-control"
           placeholder="Enter your email"
           name="email"
+          ngModel
+          required
         />
         <button class="btn btn-lg btn-primary">Sign-Up Now</button>
       </form>

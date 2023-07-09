@@ -123,3 +123,30 @@ exports.postLogout = (req, res, next) => {
   public
 */
 exports.postReset = (req, res, next) => {};
+
+/*
+  POST request
+  when a frontend tries to validate a user for auto login
+  public
+*/
+exports.userValidate = (req, res, next) => {
+  const token = req.body.token;
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, payload) => {
+    if (err) {
+      res.status(400);
+      res.end();
+    }
+
+    //Check if user is valid
+    userModel.findOne({ _id: payload.userId }).then((foundUser) => {
+      if (!foundUser) {
+        res.status(400);
+        res.end();
+      } else {
+        res.status(200);
+        res.end();
+      }
+    });
+  });
+};

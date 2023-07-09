@@ -11,13 +11,5 @@ export class AppComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    //Auto login
-    if (localStorage.getItem('token')) {
-      console.log('Not Logged in');
-      if (localStorage.getItem('token') !== 'null') {
-        this.router.navigate['/main'];
-      }
-    }
-  }
+  ngOnInit(): void {}
 }

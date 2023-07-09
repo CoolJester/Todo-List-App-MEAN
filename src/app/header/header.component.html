@@ -18,7 +18,7 @@
           alt="Person icon"
         />
         <div *ngIf="profileMenu" class="profile shadow">
-          <div class="profile-row">
+          <!-- <div class="profile-row">
             <div class="profile-img">
               <img src="../../assets/images/2.png" alt="" />
             </div>
@@ -30,20 +30,22 @@
               <img src="../../assets/images/person.png" alt="" />
             </div>
             <div class="profile-content"><span>View Profile</span></div>
-          </div>
+          </div> -->
           <div class="profile-row">
             <div class="profile-img">
               <img src="../../assets/images/2.png" alt="" />
             </div>
-            <div class="profile-content" (click)="logout()"><span>Logout</span></div>
+            <div class="profile-content" (click)="logout()">
+              <span>Logout</span>
+            </div>
           </div>
-          <hr />
-          <div class="profile-row">
+          <!-- <hr /> -->
+          <!-- <div class="profile-row">
             <div class="profile-img">
               <img src="../../assets/images/2.png" alt="" />
             </div>
             <div class="profile-content"><span>Help</span></div>
-          </div>
+          </div> -->
         </div>
       </li>
     </ul>

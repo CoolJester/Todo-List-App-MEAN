@@ -38,8 +38,13 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleProfileMenu() {
-    console.log('Works');
     this.profileMenu = !this.profileMenu;
+    //timeout to close the menu
+    if (this.profileMenu) {
+      setTimeout(() => {
+        this.profileMenu = false;
+      }, 5000);
+    }
   }
 
   logout() {

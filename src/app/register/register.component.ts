@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   registerFirst: boolean = true;
   matches: boolean = true;
-  error = false;
-  userExists = false;
+  error: boolean = false;
+  userExists: boolean = false;
 
   //binding the frontend data
   password = '';
@@ -30,31 +30,37 @@ export class RegisterComponent {
   }
 
   formSubmit(form: any) {
-    this.authService.register(form.value.email, form.value.password).subscribe(
-      (data: any) => {
-        //Store the token to the localstorage
-        localStorage.setItem('token', data.token);
-        //Redirect to main
-        this.router.navigate(['/main']);
-      },
-      (error) => {
-        switch (error.status) {
-          case 403:
-            //User already exists
-            this.userExists = true;
-            break;
-          case 400:
-            //Failed to store
-            this.error = true;
-            break;
-          case 500:
-            //Error with hashing
-            this.error = true;
-            break;
-        }
-        console.log(error);
-      }
-    );
+    //Check if passwords match first
+    if (this.password === this.cPassword) {
+      this.authService
+        .register(form.value.email, form.value.password)
+        .subscribe(
+          (data: any) => {
+            //Store the token to the localstorage
+            localStorage.setItem('token', data.token);
+            //Redirect to main
+            this.router.navigate(['/main']);
+          },
+          (error) => {
+            switch (error.status) {
+              case 403:
+                //User already exists
+                this.userExists = true;
+                break;
+              case 400:
+                //Failed to store
+                this.error = true;
+                break;
+              case 500:
+                //Error with hashing
+                this.error = true;
+                break;
+            }
+          }
+        );
+    } else {
+      this.matches = false;
+    }
   }
 
   onChange() {
