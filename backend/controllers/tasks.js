@@ -126,11 +126,13 @@ exports.editTask = (req, res, next) => {
         return res.status(404).json({ status: "No Task/s Found" });
       }
 
+      // console.log(req.body);
+
       //assign values
       task.title = req.body.title || task.title;
       task.date = req.body.date || task.date;
       task.notes = [...task.notes, req.body.notes];
-      task.staus = req.body.status || task.status;
+      task.status = req.body.status || task.status;
 
       //save
       task.save();
@@ -143,7 +145,7 @@ exports.editTask = (req, res, next) => {
       });
     });
 
-  console.log(req.body);
+  // console.log(req.body);
 };
 
 /*

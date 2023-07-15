@@ -31,7 +31,7 @@ export class EditTaskComponent implements OnInit {
   }
 
   onSubmit(form: any) {
-    console.log(form.value);
+    console.log(form.value.status);
     //try to push the values if there are any
     this.taskService
       .editTask(

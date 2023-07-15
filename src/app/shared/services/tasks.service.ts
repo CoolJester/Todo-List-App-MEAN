@@ -45,6 +45,7 @@ export class TasksService {
       time: time,
       notes: notes,
     };
+
     return this.http.put('http://localhost:3000/api/tasks/' + taskId, userData);
   }
 

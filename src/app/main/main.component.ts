@@ -99,14 +99,14 @@ export class MainComponent {
   sortSelected(select: any) {
     switch (select.value) {
       case 'date':
-        console.log(this.tasks);
+        // console.log(this.tasks);
         //When Date is selected
         this.tasks.sort(function (a, b) {
           const dateA = new Date(a.date).getTime();
           const dateB = new Date(b.date).getTime();
           return dateA - dateB;
         });
-        console.log(this.tasks);
+        // console.log(this.tasks);
         break;
       case 'status':
         //When Status is selected

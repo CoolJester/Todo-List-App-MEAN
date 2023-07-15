@@ -39,13 +39,25 @@
       <div class="row mb-3">
         <div class="col-md-4">
           <label class="form-label" for="status">Status</label>
-          <input
+          <select
+            style="font-size: 1.4rem"
+            class="form-select"
+            name="status"
+            id="status"
+            [(ngModel)]="task.status"
+          >
+            <option value="Pending">Pending</option>
+            <option value="Busy">Busy</option>
+            <option value="Stuck">Stuck</option>
+            <option value="Done">Done</option>
+          </select>
+          <!-- <input
             class="form-control"
             type="status"
             name="status"
             id=""
             [(ngModel)]="task.status"
-          />
+          /> -->
         </div>
         <div class="col-md-4">
           <label class="form-label" for="date">Date</label>
@@ -57,20 +69,14 @@
             [(ngModel)]="date"
           />
         </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
           <label class="form-label" for="time">Time</label>
           <input class="form-control" type="time" name="time" id="" ngModel />
-        </div>
+        </div> -->
       </div>
       <div class="row mb-3">
         <label class="form-label" for="notes">Notes</label>
-        <textarea
-          class="form-control"
-          name="notes"
-          id=""
-          rows="4"
-          [(ngModel)]="task.notes[0]"
-        >
+        <textarea class="form-control" name="notes" id="" rows="4" ngModel>
         </textarea>
       </div>
       <div *ngIf="success" class="alert alert-success mb-3">

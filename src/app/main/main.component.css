@@ -126,10 +126,6 @@ main {
   margin-bottom: 1.2rem;
 }
 
-.status svg {
-  fill: green;
-}
-
 .status span {
   font-size: 1.6rem;
 }
