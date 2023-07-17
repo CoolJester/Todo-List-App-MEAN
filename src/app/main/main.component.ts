@@ -12,7 +12,7 @@ import { Task } from '../shared/models/task';
 export class MainComponent {
   constructor(
     public headerService: HeaderService,
-    private tasksService: TasksService
+    public tasksService: TasksService
   ) {}
 
   //Data
@@ -152,9 +152,7 @@ export class MainComponent {
   }
 
   deleteTask(taskId: String) {
-    const deleteTask = confirm(
-      'Are you sure you wish to delete this task? \n' + taskId
-    );
+    const deleteTask = confirm('Are you sure you wish to delete this task? ');
     if (deleteTask) {
       this.tasksService.deleteTask(taskId).subscribe(
         (data) => {

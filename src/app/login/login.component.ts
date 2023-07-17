@@ -21,12 +21,18 @@ export class LoginComponent implements OnInit {
   userNotFound = false;
   invalidCredentials = false;
 
+  //For testing
+  loginForm;
+
   ngOnInit(): void {
     //Fixing the header
     this.headerService.changeState('user');
   }
 
   onSubmit(form: any) {
+    //Store the form (for testing)
+    this.loginForm = form;
+
     //send request
     this.authService.login(form.value.email, form.value.password).subscribe(
       (data: any) => {

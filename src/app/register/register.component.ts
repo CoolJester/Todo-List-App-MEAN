@@ -21,7 +21,7 @@ export class RegisterComponent {
   constructor(
     public headerService: HeaderService,
     private authService: AuthService,
-    private router: Router
+    public router: Router
   ) {}
 
   ngOnInit(): void {

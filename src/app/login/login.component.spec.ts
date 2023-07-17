@@ -1,21 +1,76 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LoginComponent } from './login.component';
+import { AuthService } from '../shared/services/auth.service';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
+import { of, throwError } from 'rxjs';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let authService: AuthService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [LoginComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [LoginComponent],
+      providers: [AuthService],
+      imports: [RouterTestingModule, FormsModule, HttpClientTestingModule],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    authService = TestBed.inject(AuthService);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  // test cases
+  it('should send login request and navigate to main on success', () => {
+    const mockForm = {
+      value: {
+        email: 'test@example.com',
+        password: 'password',
+      },
+    };
+
+    spyOn(authService, 'login').and.returnValue(
+      of({ token: 'mockToken' }) // Simulate a successful response
+    );
+
+    spyOn(component.router, 'navigate'); // Spy on the router's navigate method
+
+    // Trigger the form submission
+    component.onSubmit(mockForm);
+
+    expect(authService.login).toHaveBeenCalledWith(
+      mockForm.value.email,
+      mockForm.value.password
+    );
+
+    expect(component.router.navigate).toHaveBeenCalledWith(['/main']);
+  });
+
+  it('should handle login error', () => {
+    const mockForm = {
+      value: {
+        email: 'adminDoesNotExist@admin.com',
+        password: 'password!',
+      },
+    };
+
+    spyOn(authService, 'login').and.returnValue(
+      throwError({ status: 403 }) // Simulate an error response
+    );
+
+    spyOn(component, 'resetAlert'); // Spy on the resetAlert method
+
+    // Trigger the form submission
+    component.onSubmit(mockForm);
+
+    expect(authService.login).toHaveBeenCalledWith(
+      mockForm.value.email,
+      mockForm.value.password
+    );
+
+    expect(component.resetAlert).toHaveBeenCalledWith(403);
   });
 });
