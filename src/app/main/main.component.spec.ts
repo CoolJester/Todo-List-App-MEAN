@@ -130,8 +130,9 @@ describe('MainComponent', () => {
   it('should handle task deletion cancellation', () => {
     const taskIdToDelete = '1';
 
-    spyOn(window, 'confirm').and.returnValue(false); // Simulate user canceling the deletion
-    spyOn(tasksService, 'deleteTask'); // Ensure deleteTask is not called
+    // Simulate
+    spyOn(window, 'confirm').and.returnValue(false);
+    spyOn(tasksService, 'deleteTask');
 
     component.deleteTask(taskIdToDelete);
 
@@ -143,12 +144,14 @@ describe('MainComponent', () => {
     const taskIdToDelete = '1';
     const errorResponse = { status: 500 };
 
-    spyOn(window, 'confirm').and.returnValue(true); // Simulate user confirming the deletion
+    // Simulate confirm
+    spyOn(window, 'confirm').and.returnValue(true);
+    // Simulate an error
     spyOn(tasksService, 'deleteTask').and.returnValue(
       throwError(errorResponse)
-    ); // Simulate an error response
+    );
 
-    spyOn(window, 'alert'); // Spy on the window's alert method
+    spyOn(window, 'alert');
 
     component.deleteTask(taskIdToDelete);
 

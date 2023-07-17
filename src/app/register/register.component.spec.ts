@@ -57,9 +57,8 @@ describe('RegisterComponent', () => {
       },
     };
 
-    spyOn(authService, 'register').and.returnValue(
-      throwError({ status: 403 }) // Simulate an error response (user already exists)
-    );
+    // Simulate an error
+    spyOn(authService, 'register').and.returnValue(throwError({ status: 403 }));
 
     component.formSubmit(mockForm);
 
@@ -80,9 +79,8 @@ describe('RegisterComponent', () => {
       },
     };
 
-    spyOn(authService, 'register').and.returnValue(
-      throwError({ status: 400 }) // Simulate an error response (registration failed)
-    );
+    // Simulate an error
+    spyOn(authService, 'register').and.returnValue(throwError({ status: 400 }));
 
     component.formSubmit(mockForm);
 
@@ -103,9 +101,8 @@ describe('RegisterComponent', () => {
       },
     };
 
-    spyOn(authService, 'register').and.returnValue(
-      throwError({ status: 500 }) // Simulate an error response (hashing error)
-    );
+    // Simulate an error
+    spyOn(authService, 'register').and.returnValue(throwError({ status: 500 }));
 
     component.formSubmit(mockForm);
 

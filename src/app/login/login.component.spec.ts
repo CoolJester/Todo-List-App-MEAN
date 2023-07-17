@@ -32,11 +32,10 @@ describe('LoginComponent', () => {
       },
     };
 
-    spyOn(authService, 'login').and.returnValue(
-      of({ token: 'mockToken' }) // Simulate a successful response
-    );
+    // Simulate
+    spyOn(authService, 'login').and.returnValue(of({ token: 'mockToken' }));
 
-    spyOn(component.router, 'navigate'); // Spy on the router's navigate method
+    spyOn(component.router, 'navigate');
 
     // Trigger the form submission
     component.onSubmit(mockForm);
@@ -57,11 +56,10 @@ describe('LoginComponent', () => {
       },
     };
 
-    spyOn(authService, 'login').and.returnValue(
-      throwError({ status: 403 }) // Simulate an error response
-    );
+    // Simulate
+    spyOn(authService, 'login').and.returnValue(throwError({ status: 403 }));
 
-    spyOn(component, 'resetAlert'); // Spy on the resetAlert method
+    spyOn(component, 'resetAlert');
 
     // Trigger the form submission
     component.onSubmit(mockForm);
