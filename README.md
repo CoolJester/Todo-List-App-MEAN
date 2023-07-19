@@ -37,6 +37,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 - Get Tasks
   - use user.\_id to filter and get all tasks belonging to a user
   - use workspace.\_id to filter tasks belonging to a workspace for a user
+  - Tasks should be matching the organization they are added to _if-provided_ (new)
   - Pagination on card view
   - Filter by fields
   - Limit results
@@ -44,12 +45,37 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 - Add Task
   - validate user and workspace
   - capture incoming data, only the name is required
+  - capture the task organization it belongs to _if-provided_ (new)
+  - log task added in log (new)
   - _post_ request with body or files
 - Edit Task
   - validate user and workspace
   - update with new data
+  - log task edited and who edited in log (new)
   - _put_ request with body
-  
+
+### Organisations (new)
+
+- Create an organization
+  - Capture userId for the user that created the organization and only allow them to add other users
+  - Capture a list of users in an organization
+  - Capture name of organization
+  - _post_ request with a body
+- Get users
+  - Return all the users in an organization
+  - _get_ request with body
+- Get organizations
+  - Get all tasks that match the organization id
+  - _get_ request with organization_id in body
+- User management
+  - Send an invite by passing email _post_ request with email in body
+  - Get invites using userId and finding email _get_ request with token (current user) in body
+  - Remove user from organizaiton list _post_ request with email in body
+
+### Chat system
+
+- _tbt_
+
 ### Security
 
 - Encrypt passwords
