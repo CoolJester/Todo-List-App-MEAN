@@ -61,12 +61,16 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
   - Capture a list of users in an organization
   - Capture name of organization
   - _post_ request with a body
-- Get users
-  - Return all the users in an organization
-  - _get_ request with body
 - Get organizations
   - Get all tasks that match the organization id
   - _get_ request with organization_id in body
+- Delete organization
+  - Remove the organization
+  - Remove all tasks related to the organization
+  - _post_ request with body
+- Get users
+  - Return all the users in an organization
+  - _get_ request with body
 - User management
   - Send an invite by passing email _post_ request with email in body
   - Get invites using userId and finding email _get_ request with token (current user) in body
