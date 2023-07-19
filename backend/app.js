@@ -8,6 +8,7 @@ const dotenv = require("dotenv");
 
 const authRouter = require("./routes/auth");
 const tasksRouter = require("./routes/tasks");
+const organizationRouter = require("./routes/organizations");
 
 const app = express();
 
@@ -36,6 +37,7 @@ app.use(express.json());
 
 //Routes
 app.use("/api", authRouter);
+app.use("/api", organizationRouter);
 app.use("/api", tasksRouter);
 
 //Page not found
