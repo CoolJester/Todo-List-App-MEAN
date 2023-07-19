@@ -21,7 +21,10 @@ dotenv.config({ path: "./config/config.env" });
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("Connected to DB".cyan))
-  .catch((err) => console.log("Failed to connect to DB".red));
+  .catch((err) => {
+    console.log("Failed to connect to DB".red);
+    console.log(err);
+  });
 
 // Dev logging middleware
 if (process.env.NODE_ENV === "development") {
