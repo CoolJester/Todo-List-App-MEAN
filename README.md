@@ -2,9 +2,12 @@
 
 My final course project. I was tasked to create a Todo list app (task management app). The application will allow users to register, login, and create tasks which have a due date.
 
-## Build
+## Build & SETUP
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+installing the modules run `npm install` on both the main folder and backend folder
+
+To Run program locally navigate to the project folder and run `ng serve` to start the frontend
+Navigate to backend and run `npm start`
 
 ## Backend Specs
 
